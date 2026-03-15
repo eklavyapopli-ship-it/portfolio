@@ -21,7 +21,7 @@ export default function OurTechStack() {
 
 
   return (
-    <section className="pb-20 bg-black max-w-7xl mx-auto">
+    <section className="py-20 bg-black max-w-7xl mx-auto">
       <h2 className="text-4xl font-bold text-center text-white mb-12">
         My Tech Stack
       </h2>

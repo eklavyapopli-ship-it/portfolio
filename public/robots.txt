@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://humkind.in/
+Host: https://eklavyapopli.humkind.in
 
 # Sitemaps
-Sitemap: https://humkind.in/sitemap.xml
+Sitemap: https://eklavyapopli.humkind.in/sitemap.xml

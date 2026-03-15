@@ -1,6 +1,5 @@
-
+import Link from "next/link";
 import ExploreButton from "@/components/hover-border-gradient-demo";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 export function Hero() {
   return (
     <div className={` h-screen w-full bg-black relative flex flex-col items-center justify-center antialiased`}>
@@ -13,12 +12,13 @@ export function Hero() {
         AGENTIC AI | FULL STACK DEVELOPER | NEXT JS | REACT NATIVE 
         </p>
      <div className="flex flex-col md:flex-row justify-center items-center">
-          <ExploreButton name="Explore My Work"/>
-          <div className="hidden md:block">
-          <ExploreButton name="Let's Connect"/></div>
+          <Link href="#projects">
+          <ExploreButton name="Explore My Work"/></Link>
+          <Link href="#contact" className="hidden md:block">
+          <ExploreButton name="Let's Connect"/></Link>
      </div>
       </div>
-      <BackgroundBeams />
+      
     </div>
   );
 }
