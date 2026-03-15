@@ -2,6 +2,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { toast, Toaster } from "sonner";
+
 
 type FormData = {
   name: string;
@@ -28,14 +30,11 @@ export default function ContactForm() {
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-  setStatus("Submitting...");
 
   try {
     const res = await fetch("/api/form", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
 
@@ -43,16 +42,17 @@ const handleSubmit = async (e: React.FormEvent) => {
 
     if (!res.ok) throw new Error(data.message);
 
-    setStatus("Submitted successfully!");
+    toast.success("Form submitted successfully!");
     setFormData({ name: "", email: "", phone: "", queryType: "", message: "" });
   } catch (error) {
     console.error(error);
-    setStatus("Submission failed. Try again.");
+    toast.error("Submission failed. Try again."); 
   }
 };
 
 
-  return (
+  return (<>
+   <Toaster position="top-right" />
     <motion.section 
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -142,5 +142,6 @@ const handleSubmit = async (e: React.FormEvent) => {
       </motion.div>
    
     </motion.section>
+    </>
   );
 }
