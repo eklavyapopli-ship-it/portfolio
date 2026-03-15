@@ -14,6 +14,7 @@ type FormData = {
 };
 
 export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -30,6 +31,7 @@ export default function ContactForm() {
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
+  setLoading(true); // start loading
 
   try {
     const res = await fetch("/api/form", {
@@ -39,14 +41,15 @@ const handleSubmit = async (e: React.FormEvent) => {
     });
 
     const data = await res.json();
-
     if (!res.ok) throw new Error(data.message);
 
     toast.success("Form submitted successfully!");
     setFormData({ name: "", email: "", phone: "", queryType: "", message: "" });
   } catch (error) {
     console.error(error);
-    toast.error("Submission failed. Try again."); 
+    toast.error("Submission failed. Try again.");
+  } finally {
+    setLoading(false); // stop loading
   }
 };
 
@@ -132,11 +135,40 @@ const handleSubmit = async (e: React.FormEvent) => {
             className="border text-white border-gray-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           ></textarea>
           <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition transform hover:shadow-2xl"
-          >
-            Submit
-          </button>
+  type="submit"
+  disabled={loading} // disable during submission
+  className={`bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition transform hover:shadow-2xl flex items-center justify-center gap-2 ${
+    loading ? "cursor-not-allowed opacity-70" : ""
+  }`}
+>
+  {loading ? (
+    <>
+      <svg
+        className="animate-spin h-5 w-5 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+        ></path>
+      </svg>
+      Submitting...
+    </>
+  ) : (
+    "Submit"
+  )}
+</button>
         </form>
         {status && <p className="mt-4 text-sm text-gray-600">{status}</p>}
       </motion.div>
