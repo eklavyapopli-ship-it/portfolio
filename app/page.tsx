@@ -8,13 +8,16 @@ import SocialSection from "./components/social";
 import ContactForm from "./components/contact";
 import { Sociova } from "./components/sociova";
 import { Journey } from "./components/journey";
+import { ProjectsMobile } from "./components/mobproject";
 
 export default function Home() {
   return (
 <>
 <Hero/>
 <AboutSection/>
-<Projects/>
+<div className="hidden lg:block">
+<Projects/></div>
+<ProjectsMobile/>
 <Sociova/>
 <OurTechStack/>
 <SocialSection/>

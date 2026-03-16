@@ -27,8 +27,6 @@ const content = [
      <div className="flex h-full w-full items-center justify-center text-white">
         <img
           src="/novelai.jpeg"
-          width={300}
-          height={300}
           className="h-full w-full object-cover"
           alt="linear board demo"
         />
@@ -43,8 +41,6 @@ const content = [
      <div className="flex h-full w-full items-center justify-center text-white">
         <img
           src="/siif.jpeg"
-          width={300}
-          height={300}
           className="h-full w-full object-cover"
           alt="linear board demo"
         />
