@@ -57,7 +57,10 @@ export function Projects() {
   return (
     <div className="w-full  py-4 z-999  relative" id="projects">
         <h1 className="text-5xl m-2 text-white text-center mb-20">My Projects</h1>
-      <StickyScroll content={content} />
+
+            <StickyScroll content={content} />
+
+    
     </div>
   );
 }
