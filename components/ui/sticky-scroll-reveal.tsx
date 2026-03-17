@@ -12,6 +12,7 @@ export const StickyScroll = ({
     title: string;
     description: string;
     content?: React.ReactNode | any;
+    link:string
   }[];
   contentClassName?: string;
 }) => {
@@ -93,9 +94,20 @@ export const StickyScroll = ({
               >
                 {item.description}
               </motion.p>
+              <motion.p
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: activeCard === index ? 1 : 0.3,
+                }}
+                className="text-kg mt-2 max-w-lg text-justify text-blue-600"
+              >
+               <a href={item.link} target="_blank">Visit Project</a>
+              </motion.p>
             </div>
           ))}
-          <div className="h-40" />
+          <div className="h-30" />
         </div>
       </div>
  <div

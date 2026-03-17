@@ -18,6 +18,7 @@ const content = [
         />
       </div>
     ),
+    link:"https://github.com/eklavyapopli-ship-it/Smart-Email-Assistant"
   },
   {
     title: "NovelAI – Memory Driven AI Chat Platform",
@@ -32,6 +33,7 @@ const content = [
         />
       </div>
     ),
+    link:""
   },
   {
     title: "SSCBS Innovation and Incubation Foundation Website",
@@ -46,6 +48,7 @@ const content = [
         />
       </div>
     ),
+    link:"https://siif.in"
   },
 
 ];

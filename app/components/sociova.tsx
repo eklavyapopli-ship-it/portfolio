@@ -1,9 +1,8 @@
 "use client";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-
 export function Sociova() {
   return (
-    <div className="flex flex-col overflow-y-hidden">
+    <div className="flex flex-col overflow-y-hidden relative z-999">
       <ContainerScroll
         titleComponent={
           <>
@@ -13,9 +12,11 @@ export function Sociova() {
                 Sociova SDK
               </span>
             </h1>
+            <a href="https://sociova.humkind.in" target="_blank" className="text-md text-blue-600 underline my-4">Visit Sociova</a>
           </>
         }
       >
+
         <img
           src={`/sociova.jpeg`}
           alt="hero"
@@ -24,7 +25,9 @@ export function Sociova() {
           className="mx-auto rounded-2xl object-cover h-full object-left-top"
           draggable={false}
         />
+
       </ContainerScroll>
+      
     </div>
   );
 }
